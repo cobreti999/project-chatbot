@@ -1,8 +1,8 @@
-# Chatbot com LangGraph
+# Chatbot with LangGraph
 
-Projeto básico de chatbot desenvolvido em Python usando LangGraph e LangChain. A aplicação cria um grafo com um nó responsável por enviar as mensagens do usuário para um modelo da OpenAI e exibir as respostas no terminal.
+A basic chatbot project built in Python using LangGraph and LangChain. The application creates a graph with one node responsible for sending user messages to an OpenAI model and displaying the responses in the terminal.
 
-## Tecnologias
+## Technologies
 
 - Python
 - LangGraph
@@ -10,40 +10,40 @@ Projeto básico de chatbot desenvolvido em Python usando LangGraph e LangChain. 
 - OpenAI
 - python-dotenv
 
-## Configuração
+## Setup
 
-1. Clone o repositório e entre na pasta do projeto.
-2. Crie e ative um ambiente virtual:
+1. Clone the repository and navigate to the project directory.
+2. Create and activate a virtual environment:
 
    ```bash
    python3 -m venv .venv
    source .venv/bin/activate
    ```
 
-3. Instale as dependências:
+3. Install the dependencies:
 
    ```bash
    pip install -r requirements.txt
    ```
 
-4. Crie um arquivo `.env` na raiz do projeto e adicione sua chave da OpenAI:
+4. Create a `.env` file in the project root and add your OpenAI API key:
 
    ```env
-   OPENAI_API_KEY=sua-chave-aqui
+   OPENAI_API_KEY=your-key-here
    ```
 
-## Execução
+## Running the Application
 
-Com o ambiente virtual ativo, execute:
+With the virtual environment activated, run:
 
 ```bash
 python project-chatbot.py
 ```
 
-Digite uma mensagem para conversar com o chatbot. Para encerrar, digite `exit`.
+Enter a message to chat with the bot. To exit, type `exit`.
 
-## Estrutura básica
+## Project Structure
 
-- `project-chatbot.py`: implementação do grafo e do loop de conversação.
-- `requirements.txt`: dependências do projeto.
-- `.env`: configuração local da chave da API, não versionada pelo Git.
+- `project-chatbot.py`: graph implementation and conversation loop.
+- `requirements.txt`: project dependencies.
+- `.env`: local API key configuration, ignored by Git.
