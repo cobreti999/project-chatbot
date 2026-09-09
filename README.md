@@ -40,7 +40,11 @@ With the virtual environment activated, run:
 python project-chatbot.py
 ```
 
-Enter a message to chat with the bot. To exit, type `exit`.
+Enter a message to chat with the bot. The chatbot remembers the questions and
+answers from the current terminal session. To exit, type `exit`.
+
+The memory is kept in process using LangGraph's `MemorySaver`, so it is reset
+when the application is restarted.
 
 ## Project Structure
 

@@ -1,4 +1,5 @@
 from langgraph.graph import StateGraph
+from langgraph.checkpoint.memory import MemorySaver
 from typing import Annotated
 from typing_extensions import TypedDict
 from langgraph.graph.message import add_messages
@@ -18,6 +19,8 @@ graph_builder = StateGraph(State)
 # Initialize the language model used to generate chatbot responses.
 llm = ChatOpenAI(model="gpt-5-nano")
 
+memory = MemorySaver()
+
 def chatbot(state: State):
     # Send the current messages to the model and return its response.
     response = llm.invoke(state["messages"])
@@ -31,7 +34,9 @@ graph_builder.set_entry_point("chatbot")
 graph_builder.set_finish_point("chatbot")
 
 # Compile the graph into an executable application.
-graph = graph_builder.compile()
+graph = graph_builder.compile(checkpointer=memory)
+
+config = {"configurable": {"thread_id": "terminal-chat"}}
 
 # Display visual and text representations of the graph for inspection.
 from IPython.display import Image, display
@@ -48,6 +53,7 @@ while True:
     # Stream graph updates and print each generated response.
     for event in graph.stream(
         {"messages": [("user", user_input)]},
+        config=config,
         stream_mode="updates"
     ):
         for value in event.values():
